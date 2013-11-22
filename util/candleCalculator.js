@@ -58,22 +58,24 @@ var calculateCandle = function(err, trades) {
   if(err)
     throw err;
 
-  var prices = _.pluck(trades, 'price');
-  var open = _.first(prices);
-  var high = _.max(prices);
-  var low = _.min(prices);
-  var close = _.last(prices);
-  console.log(now(), 'calculated candle ', i, '\tOHCL:', open, high, low, close);
+  if(prices.length > 0) {
+    var prices = _.pluck(trades, 'price');
+    var open = _.first(prices);
+    var high = _.max(prices);
+    var low = _.min(prices);
+    var close = _.last(prices);
+    console.log(now(), 'calculated candle ', i, '\tOHCL:', open, high, low, close);
 
-  //1309107600,17.51001,17.51001,15,17 //e.g
-  csv += [
-    currentCandleTime.format('X') - (candleDuration),
-    open,
-    high,
-    low,
-    close
-  ].join(',') + '\n';
+    //1309107600,17.51001,17.51001,15,17 //e.g
+    csv += [
+      currentCandleTime.format('X') - (candleDuration),
+      open,
+      high,
+      low,
+      close
+    ].join(',') + '\n';
 
+  }
   // recursive
   ask();
 }

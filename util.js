@@ -77,6 +77,9 @@ var util = {
 
     return util.average(sample);
   }
+
+
+
 }
 
 var config = util.getConfig();
