@@ -32,6 +32,10 @@ if(config.normal.enabled)
 // set backtesting reminder
 config.backtest.enabled = true;
 
+
+//set config file from params
+if(process.argv[2] != null)
+  config.backtest.candleFile = process.argv[2];
 // set updated config
 util.setConfig(config);
 

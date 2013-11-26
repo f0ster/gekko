@@ -13,11 +13,11 @@ config.tradingMethod =  'Exponential Moving Averages';
 // Exponential Moving Averages settings:
 config.EMA = {
   // timeframe per candle
-  interval: 60, // in minutes
+  interval: 1, // in minutes
   // EMA weight (α)
   // the higher the weight, the more smooth (and delayed) the line
-  short: 10,
-  long: 21,
+  short: 10, //10
+  long: 21, //21
   // amount of candles to remember and base initial EMAs on
   candles: 100,
   // the difference between the EMAs (to act as triggers)
@@ -80,7 +80,7 @@ config.profitCalculator = {
   // only want report after a sell? set to `false`.
   verbose: false,
   // how much fee in % does each trade cost?
-  fee: 0.6
+  fee: 0.0
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,7 +97,7 @@ config.profitCalculator = {
 //                ADVISED TO MAKE REAL WORLD DECISIONS BASED ON THE RESULTS
 //                UNTIL THE CODE HAS BEEN PROVED SOLID.
 config.backtest = {
-  candleFile: 'candles.csv',
+  candleFile: 'data/candles-45859-07-25_45862-04-20_60-seconds.csv',
   from: 0,
   to: 0
 }

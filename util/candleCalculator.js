@@ -19,7 +19,7 @@ if(process.argv.length == 2) {
 }
 
 
-var output = 'data/candles-' + moment.unix(startTime).format('YYYY-MM-DD') + '_' + moment.unix(endTime).format('YYYY-MM-DD') + '_' + candleDurationVal + '-' + candleDurationUnits + '.csv'; // csv file with your candles
+var output = 'data/candles-' + startTime.format('YYYY-MM-DD') + '_' + endTime.format('YYYY-MM-DD') + '_' + candleDurationVal + '-' + candleDurationUnits + '.csv'; // csv file with your candles
 
 
 
@@ -58,7 +58,7 @@ var calculateCandle = function(err, trades) {
   if(err)
     throw err;
 
-  if(prices.length > 0) {
+  if(trades.length > 0) {
     var prices = _.pluck(trades, 'price');
     var open = _.first(prices);
     var high = _.max(prices);
@@ -84,9 +84,9 @@ var calculateCandle = function(err, trades) {
 // write csv
 ////////////////////////////////////////////
 var write = function() {
-  console.log(now(), 'going to write last 10 candles to output')
+  //console.log(now(), 'going to write last 10 candles to output')
   fs.appendFileSync(output, csv);
-  console.log(now(), 'done, written', i, 'candles so far');
+  //console.log(now(), 'done, written', i, 'candles so far');
   csv = '';
 }
 var done = function() {
